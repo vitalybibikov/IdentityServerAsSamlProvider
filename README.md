@@ -11,9 +11,11 @@ https://www.identityserver.com/products/saml2p
    - Identity Server 4 with SAML2p library that corresponds to SAML's Identity Provider
 2. mitp.IdentityProvider is acting as a normal Identity Server, that implements SAML SSO.
    - Acts as a Service Provider in SAML terminology. By using SAML2p lib.
+   - itg is added as an External Identity Provider, which returns proper SAML responses to mitp identity server.
 3. All the configurations are in Startup and Config classes of the identity servers.
+4. SPA application is used, that implements OAuth 2.0 Auth Code flow + PKCE, is a simple Javascript application, that utilizes oidc-client.js
 
-  ### START
+  ### SETUP
   
   - To start the up
   1. Install docker.
@@ -25,5 +27,6 @@ https://www.identityserver.com/products/saml2p
   7. Login, creds are specified on a login page.
    
    
-   Link:
-   https://www.identityserver.com/articles/saml-20-integration-with-identityserver4
+   Links:
+   1. SAML2P docs: https://www.identityserver.com/articles/saml-20-integration-with-identityserver4
+   2. Quickstarts: https://github.com/IdentityServer/IdentityServer4/tree/main/samples/Quickstarts
