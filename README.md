@@ -1,6 +1,8 @@
 # Identity Server 4 with SAML support, dockerized.
+
 ## This is an example of SSO using SAML and Identity Server 4
-### IdentityServer4 SAML2P library from Rock Solid Knowledge
+
+### IdentityServer4 SAML2P library from Rock Solid Knowledge, dotnet core 3.1 is used, Alpine images for docker containers.
 
 In order to use the library, you need to ask for a DEMO licence, as SAML2p is not free:
 https://www.identityserver.com/products/saml2p
@@ -14,6 +16,13 @@ https://www.identityserver.com/products/saml2p
    - itg is added as an External Identity Provider, which returns proper SAML responses to mitp identity server.
 3. All the configurations are in Startup and Config classes of the identity servers.
 4. SPA application is used, that implements OAuth 2.0 Auth Code flow + PKCE, is a simple Javascript application, that utilizes oidc-client.js
+
+### Versions:
+1. dotnet core 3.1
+2. Alpine 3.12
+3. MSSQL in docker 2019
+4. Identity Server 4.
+5. docker-compose 3.7
 
   ### SETUP
   
