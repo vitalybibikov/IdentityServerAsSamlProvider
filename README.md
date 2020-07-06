@@ -26,7 +26,6 @@ https://www.identityserver.com/products/saml2p
 
   ### SETUP
   
-  - To start the up
   1. Install docker.
   2. Go to the repo (where docker-compose is placed)
   3. run docker-compose up --build
