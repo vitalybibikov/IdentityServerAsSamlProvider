@@ -1,0 +1,83 @@
+version: '3.7'
+
+services:
+  mitp.api:
+    image: ${DOCKER_REGISTRY-}mitpapi
+    restart: on-failure
+    labels:
+      - "project=mitp"
+    build:
+      context: .
+      dockerfile: mitp/mitp.Api/Dockerfile
+
+  mitp.client.spa:
+    image: ${DOCKER_REGISTRY-}mitpclientspa
+    restart: on-failure
+    labels:
+      - "project=mitp"
+    build:
+      context: .
+      dockerfile: mitp/mitp.Client.SPA/Dockerfile
+
+  mitp.identityprovider:
+    image: ${DOCKER_REGISTRY-}mitpidentityprovider
+    restart: on-failure
+    labels:
+      - "project=mitp"
+    build:
+      context: .
+      dockerfile: mitp/mitp.IdentityProvider/Dockerfile
+    depends_on:
+      - mssqldocker
+
+  mitp.mvcclient:
+    image: ${DOCKER_REGISTRY-}mvcclient
+    restart: on-failure
+    labels:
+      - "project=mitp"
+    build:
+      context: .
+      dockerfile: mitp/mitp.MvcClient/Dockerfile
+
+  itg.client.spa:
+    image: ${DOCKER_REGISTRY-}itgclientspa
+    restart: on-failure
+    labels:
+      - "project=itg"
+    build:
+      context: .
+      dockerfile: itg/itg.Client.SPA/Dockerfile
+
+  itg.identityprovider:
+    image: ${DOCKER_REGISTRY-}itgidentityprovider
+    restart: on-failure
+    labels:
+      - "project=itg"
+    build:
+      context: .
+      dockerfile: itg/itg.IdentityProvider/Dockerfile
+    depends_on:
+      - mssqldocker
+
+  itg.mvcclient:
+    image: ${DOCKER_REGISTRY-}itgidentityprovider
+    restart: on-failure
+    labels:
+      - "project=itg"
+    build:
+      context: .
+      dockerfile: itg/itg.MvcClient/Dockerfile
+
+  mssqldocker:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+
+
+
+networks:
+  default:
+      name: common-network2

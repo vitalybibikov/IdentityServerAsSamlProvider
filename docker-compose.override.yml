@@ -1,0 +1,40 @@
+version: '3.7'
+
+x-common-variables: &common-variables
+  'ASPNETCORE_ENVIRONMENT': dev
+
+services:
+  mitp.api:
+    environment: *common-variables
+    ports:
+      - 6001:80
+
+  mitp.client.spa:
+    environment: *common-variables
+    ports:
+      - 5003:80
+
+  mitp.identityprovider:
+    environment: *common-variables
+    ports:
+      - 5001:80
+
+  mitp.mvcclient:
+    environment: *common-variables
+    ports:
+      - 5002:80
+
+  itg.client.spa:
+    environment: *common-variables
+    ports:
+      - 7003:80
+
+  itg.identityprovider:
+    environment: *common-variables
+    ports:
+      - 7001:80
+
+  itg.mvcclient:
+    environment: *common-variables
+    ports:
+      - 7002:80
